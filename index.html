@@ -3,273 +3,453 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Стожари змін 2026 — Дашборд донатів</title>
+<title>Стожари змін 2026 — Вартові</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-  :root {
-    --слова:  #7c3aed;
-    --життя:  #16a34a;
-    --дух:    #ea580c;
-    --логіка: #2563eb;
-    --bg:     #f5f5f7;
-    --card:   #ffffff;
-    --text:   #1a1a2e;
-    --muted:  #6b7280;
-    --border: #e5e7eb;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ace-green:  #5da82c;
+  --ace-dark:   #3d7a1a;
+  --ace-slate:  #40535c;
+  --ace-light:  #eef6e6;
+  --слова:  #7c3aed;
+  --життя:  #16a34a;
+  --дух:    #ea580c;
+  --логіка: #2563eb;
+  --bg:     #f5f5f7;
+  --card:   #ffffff;
+  --text:   #1c1c1c;
+  --muted:  #6b7280;
+  --border: #e5e7eb;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
+/* HEADER */
+header { overflow: hidden; }
+.header-topbar {
+  background: #fff;
+  padding: 14px 48px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.header-ace-logo { height: 44px; display: block; }
+.header-hero {
+  background: linear-gradient(135deg, #3d7a1a 0%, #5da82c 60%, #4a9626 100%);
+  color: #fff;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 48px;
+  gap: 32px;
+}
+.header-left { flex: 1; }
+.header-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.header-tagline { font-size: 1rem; margin-top: 8px; opacity: 0.9; font-weight: 600; }
+.header-desc { font-size: 0.88rem; margin-top: 10px; opacity: 0.7; line-height: 1.7; max-width: 480px; }
+.header-image { flex: 0 0 auto; width: 200px; }
+.header-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+  display: block;
+}
 
-  header {
-    background: linear-gradient(135deg, #1e0a3c 0%, #3b0764 50%, #1e3a5f 100%);
-    color: #fff;
-    padding: 32px 24px 28px;
-    text-align: center;
-  }
-  header .emoji { font-size: 2.4rem; display: block; margin-bottom: 8px; }
-  header h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
-  header p  { font-size: 0.95rem; opacity: 0.75; margin-top: 6px; }
+/* ABOUT */
+.about-wrap { max-width: 800px; margin: 32px auto; padding: 0 24px; }
+.about-box {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 28px 32px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.about-box p { color: var(--muted); font-size: 0.92rem; line-height: 1.75; }
+.about-disclaimer { font-size: 0.78rem !important; opacity: 0.7; margin-top: 12px !important; font-style: italic; }
 
-  .stats-bar {
-    display: flex;
-    gap: 16px;
-    padding: 20px 24px;
-    background: #fff;
-    border-bottom: 1px solid var(--border);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .stat {
-    text-align: center;
-    padding: 8px 20px;
-  }
-  .stat-value {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .stat-divider { width: 1px; background: var(--border); }
+/* STATS BAR */
+.stats-bar {
+  display: flex;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.stat { text-align: center; padding: 18px 36px; flex: 1; min-width: 130px; }
+.stat + .stat { border-left: 1px solid var(--border); }
+.stat-value { font-size: 1.9rem; font-weight: 800; line-height: 1; }
+.stat-label { font-size: 0.7rem; color: var(--muted); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.06em; }
 
-  .controls {
-    padding: 16px 24px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+/* CHART */
+.chart-wrap-outer { max-width: 900px; margin: 24px auto; padding: 0 24px; }
+.chart-box {
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 20px 24px 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.chart-header h3 { font-size: 0.95rem; font-weight: 700; }
+.chart-note { font-size: 0.75rem; color: var(--muted); }
+.chart-canvas-wrap { position: relative; height: 180px; }
+.chart-empty { text-align: center; padding: 36px; color: var(--muted); font-size: 0.85rem; }
 
-  .filter-tabs {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    flex: 1;
-  }
-  .tab {
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1.5px solid var(--border);
-    background: var(--card);
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all 0.15s;
-    color: var(--text);
-  }
-  .tab:hover { border-color: #a78bfa; }
-  .tab.active {
-    background: #1e0a3c;
-    border-color: #1e0a3c;
-    color: #fff;
-  }
+/* CONTROLS */
+.controls {
+  padding: 16px 24px 8px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
+.tab {
+  padding: 9px 20px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.15s;
+  color: var(--text);
+  white-space: nowrap;
+}
+.tab:hover { border-color: var(--ace-green); color: var(--ace-green); }
+.tab.active { background: var(--ace-green); border-color: var(--ace-green); color: #fff; }
+.sort-select {
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  font-size: 0.85rem;
+  cursor: pointer;
+  outline: none;
+}
 
-  .sort-select {
-    padding: 6px 12px;
-    border-radius: 8px;
-    border: 1.5px solid var(--border);
-    background: var(--card);
-    font-size: 0.85rem;
-    cursor: pointer;
-    outline: none;
-  }
+/* CATEGORY BANNER */
+.cat-banner {
+  display: none;
+  max-width: 1152px;
+  margin: 8px auto 0;
+  padding: 18px 22px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  border-left-style: solid;
+  border-left-color: #ccc;
+}
+.cat-banner.visible { display: block; }
+.cat-banner-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+.cat-banner-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    padding: 0 24px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+/* LEADER SECTION */
+.leader-section {
+  display: none;
+  max-width: 1152px;
+  margin: 16px auto 0;
+}
+.leader-section.visible { display: block; }
+.section-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
 
-  .card {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 20px;
-    border: 1px solid var(--border);
-    position: relative;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  }
+/* LEADER FULL-WIDTH CARD */
+.leader-card {
+  display: flex;
+  background: var(--card);
+  border-radius: 14px;
+  border: 2px solid #ccc;
+  overflow: hidden;
+  cursor: default;
+  transition: box-shadow 0.15s;
+}
+.leader-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
+.leader-card-video {
+  position: relative;
+  flex: 0 0 380px;
+  min-height: 215px;
+  background: #1a1a2e;
+  cursor: pointer;
+  overflow: hidden;
+}
+.leader-card-video img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.3s;
+}
+.leader-card-video:hover img { transform: scale(1.04); }
+.leader-card-info {
+  flex: 1;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+}
+.leader-card-info .card-name { font-size: 1.4rem; font-weight: 800; }
+.leader-card-info .card-grade { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+.leader-card-info .amount-value { font-size: 2.2rem; }
+.leader-card-info .amount-label { font-size: 0.75rem; color: var(--muted); margin-bottom: 16px; }
 
-  .card-rank {
-    position: absolute;
-    top: 14px;
-    right: 16px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    opacity: 0.18;
-    color: var(--text);
-  }
-  .card-rank.top1 { opacity: 1; font-size: 1.4rem; }
+/* OTHERS LABEL */
+.others-label {
+  display: none;
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 24px;
+}
+.others-label.visible { display: block; }
 
-  .cat-badge {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 12px;
-    color: #fff;
-    margin-bottom: 10px;
-    letter-spacing: 0.03em;
-  }
-  .cat-слова  { background: var(--слова); }
-  .cat-життя  { background: var(--життя); }
-  .cat-духу   { background: var(--дух); }
-  .cat-логіки { background: var(--логіка); }
+@media (max-width: 640px) {
+  .leader-card { flex-direction: column; }
+  .leader-card-video { flex: 0 0 auto; height: 200px; }
+  .leader-card-info { padding: 18px; }
+  .leader-card-info .card-name { font-size: 1.1rem; }
+  .leader-card-info .amount-value { font-size: 1.6rem; }
+}
 
-  .card-name {
-    font-size: 1.05rem;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 2px;
-  }
-  .card-grade {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-bottom: 14px;
-  }
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 8px 24px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  .amount-block { margin-bottom: 12px; }
-  .amount-value {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--text);
-    line-height: 1;
-  }
-  .amount-label {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 3px;
-  }
+/* CARD */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.card.is-leader { border-width: 2px; }
 
-  .progress-wrap {
-    background: var(--bg);
-    border-radius: 6px;
-    height: 6px;
-    overflow: hidden;
-    margin-bottom: 12px;
-  }
-  .progress-bar {
-    height: 100%;
-    border-radius: 6px;
-    transition: width 0.6s ease;
-  }
-  .progress-label {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: -8px;
-    margin-bottom: 12px;
-  }
+/* VIDEO THUMBNAIL */
+.card-video {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #1a1a2e;
+  cursor: pointer;
+  overflow: hidden;
+}
+.card-video img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.card-video:hover img { transform: scale(1.04); }
+.play-overlay {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px; height: 50px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  transition: background 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+.card-video:hover .play-overlay { background: rgba(0,0,0,0.85); transform: translate(-50%, -50%) scale(1.1); }
+.rank-badge {
+  position: absolute; top: 8px; right: 8px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+}
+.leader-badge-overlay {
+  position: absolute; top: 8px; left: 8px;
+  background: #fbbf24;
+  color: #1a1a2e;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
 
-  .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: #7c3aed;
-    text-decoration: none;
-    border: 1.5px solid #ddd4fe;
-    padding: 5px 12px;
-    border-radius: 8px;
-    transition: all 0.15s;
-  }
-  .card-link:hover {
-    background: #f5f3ff;
-    border-color: #7c3aed;
-  }
+/* CARD BODY */
+.card-body { padding: 16px 18px 18px; }
+.cat-badge {
+  display: inline-block;
+  font-size: 0.68rem; font-weight: 600;
+  padding: 2px 9px; border-radius: 10px;
+  color: #fff; margin-bottom: 8px; letter-spacing: 0.03em;
+}
+.cat-слова  { background: var(--слова); }
+.cat-життя  { background: var(--життя); }
+.cat-духу   { background: var(--дух); }
+.cat-логіки { background: var(--логіка); }
 
-  .error-chip {
-    font-size: 0.72rem;
-    color: #ef4444;
-    background: #fef2f2;
-    border-radius: 6px;
-    padding: 2px 8px;
-    margin-top: 6px;
-    display: inline-block;
-  }
+.card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin-bottom: 2px; }
+.card-grade { font-size: 0.78rem; color: var(--muted); margin-bottom: 12px; }
+.amount-value { font-size: 1.75rem; font-weight: 800; line-height: 1; }
+.amount-label { font-size: 0.72rem; color: var(--muted); margin-top: 3px; margin-bottom: 12px; }
+.progress-wrap {
+  background: var(--bg); border-radius: 6px;
+  height: 5px; overflow: hidden; margin-bottom: 6px;
+}
+.progress-bar { height: 100%; border-radius: 6px; transition: width 0.6s ease; }
+.progress-label { font-size: 0.72rem; color: var(--muted); margin-bottom: 12px; }
+.card-link {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--ace-green); text-decoration: none;
+  border: 1.5px solid #b2d8cc;
+  padding: 8px 14px; border-radius: 8px;
+  transition: all 0.15s;
+}
+.card-link:hover { background: var(--ace-light); border-color: var(--ace-green); }
+.card-details { display: none; }
+.card-details.open { display: block; }
+.card-toggle {
+  display: block; width: 100%; margin-top: 10px;
+  padding: 5px 8px; background: none;
+  border: 1px solid var(--border); border-radius: 6px;
+  cursor: pointer; font-size: 0.75rem; color: var(--muted);
+  text-align: center; transition: background 0.15s;
+  outline: none; font-family: inherit;
+}
+.card-toggle:hover { background: var(--bg); }
 
-  .updated-bar {
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--muted);
-    padding: 10px;
-    background: var(--card);
-    border-top: 1px solid var(--border);
-  }
+.sparkline-wrap {
+  margin: 8px 0 10px;
+  height: 36px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.sparkline { width: 100%; height: 100%; display: block; }
 
-  .loading {
-    text-align: center;
-    padding: 80px 24px;
-    color: var(--muted);
-    font-size: 1rem;
-  }
-  .loading span { display: block; margin-top: 10px; }
+.error-chip {
+  font-size: 0.7rem; color: #ef4444; background: #fef2f2;
+  border-radius: 6px; padding: 2px 8px; margin-top: 6px; display: inline-block;
+}
 
-  @media (max-width: 480px) {
-    header h1 { font-size: 1.35rem; }
-    .grid { padding: 0 12px 32px; gap: 12px; }
-    .amount-value { font-size: 1.5rem; }
-  }
+/* VIDEO MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  align-items: center; justify-content: center;
+  padding: 16px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  width: min(720px, 100%);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+.modal-topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 16px;
+  background: #111; color: #fff;
+}
+.modal-student-name { font-size: 0.9rem; font-weight: 600; }
+.modal-close {
+  background: none; border: none; color: #aaa;
+  font-size: 1.5rem; cursor: pointer; padding: 0 4px; line-height: 1;
+  transition: color 0.15s;
+}
+.modal-close:hover { color: #fff; }
+.modal-frame-wrap { position: relative; padding-top: 56.25%; }
+.modal-frame-wrap iframe {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; border: none;
+}
+
+/* FOOTER */
+.updated-bar {
+  text-align: center; font-size: 0.75rem;
+  color: var(--muted); padding: 14px;
+  background: var(--card); border-top: 1px solid var(--border);
+}
+
+.loading { text-align: center; padding: 80px 24px; color: var(--muted); font-size: 1rem; }
+
+@media (max-width: 640px) {
+  .header-topbar { padding: 12px 20px; }
+  .header-ace-logo { height: 34px; }
+  .header-inner { flex-direction: column-reverse; padding: 28px 20px; gap: 20px; }
+  .header-image { width: 140px; align-self: center; }
+  .header-title { font-size: 1.7rem; }
+  .about-wrap { padding: 0 12px; margin: 20px auto; }
+  .about-box { padding: 20px 18px; }
+  .stat { padding: 14px 20px; }
+  .grid { padding: 8px 12px 32px; gap: 12px; }
+  .controls { padding: 12px 12px 6px; }
+  .cat-banner { margin: 8px 12px; }
+  .leader-section { padding: 0 12px; }
+  .others-label { padding: 0 12px; }
+  .chart-wrap-outer { padding: 0 12px; }
+}
 </style>
 </head>
 <body>
 
 <header>
-  <span class="emoji">⭐</span>
-  <h1>Стожари змін 2026</h1>
-  <p>Дашборд збору донатів — ACE School</p>
+  <div class="header-topbar">
+    <img src="logo.png" alt="ACE School" class="header-ace-logo">
+  </div>
+  <div class="header-hero">
+    <div class="header-inner">
+      <div class="header-left">
+        <h1 class="header-title">Стожари змін 2026</h1>
+        <p class="header-tagline">Благодійна премія «ВАРТОВІ», бо варті!</p>
+        <p class="header-desc">Церемонія нагородження тих, хто тримає наш світ. Обирайте номінантів, дивіться їхні історії та голосуйте донатом.</p>
+      </div>
+      <div class="header-image">
+        <img src="assets/statuette.jpg" alt="Статуетка Вартового">
+      </div>
+    </div>
+  </div>
 </header>
 
-<div class="stats-bar" id="statsBar">
+<div class="about-wrap">
+  <div class="about-box">
+    <p>Оберіть свого «Вартового» — та підтримайте тих, хто справді вартий уваги й визнання. Дивіться відео кожного номінанта та голосуйте донатом за найкращих.</p>
+    <p class="about-disclaimer">* Всі зібрані кошти йдуть на благодійність. Звіт буде опубліковано на офіційних ресурсах ACE School після завершення ініціативи.</p>
+  </div>
+</div>
+
+<div class="stats-bar">
   <div class="stat">
     <div class="stat-value" id="statTotal">—</div>
     <div class="stat-label">Загалом зібрано ₴</div>
   </div>
-  <div class="stat-divider"></div>
   <div class="stat">
     <div class="stat-value" id="statCount">—</div>
     <div class="stat-label">Учасників</div>
   </div>
-  <div class="stat-divider"></div>
   <div class="stat">
     <div class="stat-value" id="statLeader">—</div>
     <div class="stat-label">Лідер збору</div>
@@ -278,54 +458,115 @@
 
 <div class="controls">
   <div class="filter-tabs" id="filterTabs">
-    <button class="tab active" data-cat="">Всі</button>
-    <button class="tab" data-cat="Вартові слова">🗣 Слова</button>
-    <button class="tab" data-cat="Вартові життя">🌿 Життя</button>
-    <button class="tab" data-cat="Вартові духу">🔥 Дух</button>
-    <button class="tab" data-cat="Вартові логіки">🔬 Логіка</button>
+    <button class="tab active" data-cat="">🌟 Всі</button>
+    <button class="tab" data-cat="Вартові слова">🗣 Вартові слова</button>
+    <button class="tab" data-cat="Вартові життя">🌿 Вартові життя</button>
+    <button class="tab" data-cat="Вартові духу">🔥 Вартові духу</button>
+    <button class="tab" data-cat="Вартові логіки">🔬 Вартові логіки</button>
   </div>
   <select class="sort-select" id="sortSelect">
-    <option value="amount">Сортування: сума ↓</option>
-    <option value="name">Сортування: ім'я</option>
-    <option value="grade">Сортування: клас</option>
+    <option value="amount">Сума ↓</option>
+    <option value="name">Ім'я</option>
+    <option value="grade">Клас</option>
   </select>
 </div>
 
+<div class="cat-banner" id="catBanner">
+  <div class="cat-banner-title" id="catBannerTitle"></div>
+  <div class="cat-banner-desc" id="catBannerDesc"></div>
+</div>
+
+<div class="leader-section" id="leaderSection">
+  <div class="section-label">🏆 Лідер номінації</div>
+  <div id="leaderCardWrap"></div>
+</div>
+
+<div class="others-label" id="othersLabel">
+  <div class="section-label">Інші учасники</div>
+</div>
+
 <div class="grid" id="grid">
-  <div class="loading">
-    <div>⏳</div>
-    <span>Завантаження даних...</span>
+  <div class="loading">⏳ Завантаження...</div>
+</div>
+
+<div class="chart-wrap-outer">
+  <div class="chart-box">
+    <div class="chart-header">
+      <h3>📈 Динаміка збору</h3>
+      <span class="chart-note" id="chartNote"></span>
+    </div>
+    <div class="chart-canvas-wrap" id="chartCanvasWrap">
+      <canvas id="progressChart"></canvas>
+    </div>
   </div>
 </div>
 
 <div class="updated-bar" id="updatedBar">Оновлення даних...</div>
 
+<div class="modal-overlay" id="modal" onclick="handleModalBg(event)">
+  <div class="modal-box">
+    <div class="modal-topbar">
+      <span class="modal-student-name" id="modalStudentName"></span>
+      <button class="modal-close" onclick="closeVideo()">✕</button>
+    </div>
+    <div class="modal-frame-wrap">
+      <iframe id="modalFrame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
 <script>
-const CAT_SLUG = {
-  'Вартові слова':  'слова',
-  'Вартові життя':  'життя',
-  'Вартові духу':   'духу',
-  'Вартові логіки': 'логіки',
+const CAT_INFO = {
+  'Вартові слова': {
+    icon: '🗣', color: '#7c3aed', slug: 'слова',
+    desc: 'У цій номінації представлені учні, які майстерно володіють словом. Вони переконують у дебатах, створюють тексти, виступають на сцені та доводять, що слово здатне надихати, об\'єднувати й змінювати світ. Галузь об\'єднує філологію, ораторське мистецтво, дебати, акторську майстерність та інші гуманітарні напрями.',
+  },
+  'Вартові життя': {
+    icon: '🌿', color: '#16a34a', slug: 'життя',
+    desc: 'У цій номінації ми відзначаємо учнів, які досліджують світ живої природи, відкривають закономірності навколишнього середовища та допомагають краще зрозуміти життя через біологію та хімію.',
+  },
+  'Вартові духу': {
+    icon: '🔥', color: '#ea580c', slug: 'духу',
+    desc: 'У цій номінації ми відзначаємо тих, хто надихає інших своїми творчими здобутками, спортивними перемогами та силою характеру. Вартові духу демонструють, що розвиток людини неможливий без сміливості, наполегливості та віри у власні сили.',
+  },
+  'Вартові логіки': {
+    icon: '🔬', color: '#2563eb', slug: 'логіки',
+    desc: 'У цій номінації представлені учні, які демонструють силу аналітичного мислення, наполегливість у пошуку рішень та здатність знаходити закономірності там, де інші бачать лише складні задачі. Галузь об\'єднує досягнення з математики та фізики.',
+  },
 };
-const CAT_COLOR = {
-  'Вартові слова':  '#7c3aed',
-  'Вартові життя':  '#16a34a',
-  'Вартові духу':   '#ea580c',
-  'Вартові логіки': '#2563eb',
+
+const VIDEOS = {
+  '2XrzwMqePn': 'v4diMuX1BOc',
+  'W6XwXiXi3':  '_1_Q5GXq0Qc',
+  '922kecxCQw': 'hZS2aZo3ab8',
+  '8XPX4oyhHq': 'kmRW0mL7D84',
+  '5QTG83y6eG': 'lmGrn7m6RRI',
+  '4anJ7oFxgJ': 'Tsji0Olg5qE',
+  '9BfZTQ2n4q': 't9bbCMP03g8',
+  '7KSGo48SLf': 'oI1lgXOXty0',
+  'AXA934Q9Kv': 'euM8vNMXIUc',
+  '96hkTy4SJk': 'VceLov37rTo',
+  '2g5RzDYKxc': 'cp9np9c9cbU',
+  'ADjkdb6bEk': 'Pl6TuHX_dxc',
+  'cubfarQkJ':  'tNdeLABM6yc',
+  '7ZEmbjBYx4': '0AfBLduSCBA',
+  '7doAjBszk9': 'qVvQLjICvxA',
+  '1bwGnTwRm':  'bwesfWIoraU',
+  '9CHe2a9Wz':  'As_9lJicYSM',
+  '3ZB3YtdSvB': 'Xp2O5GlS0kU',
+  'stHiibiKi':  'Q3N-WRikj0k',
 };
 
 let allJars = [];
 let activeFilter = '';
 let activeSort = 'amount';
+let historyById = {};
+let historyData = null;
+let chartInstance = null;
 
 function fmt(n) {
   if (n == null) return '—';
   return n.toLocaleString('uk-UA');
-}
-
-function pct(amount, goal) {
-  if (!goal || goal === 0) return null;
-  return Math.min(100, Math.round(amount / goal * 100));
 }
 
 function rankEmoji(rank) {
@@ -335,78 +576,260 @@ function rankEmoji(rank) {
   return `#${rank}`;
 }
 
+function pct(amount, goal) {
+  if (!goal) return null;
+  return Math.min(100, Math.round(amount / goal * 100));
+}
+
+function sparklineHTML(points, color) {
+  if (!points || points.length < 2) return '';
+  const max = Math.max(...points, 1);
+  const W = 200, H = 36;
+  const coords = points.map((v, i) => {
+    const x = (i / (points.length - 1)) * W;
+    const y = H - (v / max) * (H - 2) - 1;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  const areaClose = ` ${W},${H} 0,${H}`;
+  return `<div class="sparkline-wrap">
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" class="sparkline">
+      <polyline points="${coords}${areaClose}" fill="${color}" fill-opacity="0.1" stroke="none"/>
+      <polyline points="${coords}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>`;
+}
+
+function leaderCardHTML(jar, rank) {
+  const info = CAT_INFO[jar.category] || {};
+  const color = info.color || '#666';
+  const vid = VIDEOS[jar.id];
+  const thumb = vid ? `https://img.youtube.com/vi/${vid}/mqdefault.jpg` : null;
+  const p = jar.amountNum != null && jar.goalNum ? pct(jar.amountNum, jar.goalNum) : null;
+  const safeStudent = jar.student.replace(/'/g, "\\'");
+
+  return `
+  <div class="leader-card" style="border-color:${color}">
+    ${thumb ? `
+    <div class="leader-card-video" onclick="openVideo('${vid}','${safeStudent}')">
+      <img src="${thumb}" alt="${jar.student}" loading="lazy">
+      <div class="play-overlay">▶</div>
+      <div class="leader-badge-overlay">🏆 Лідер</div>
+      ${rank ? `<div class="rank-badge">${rankEmoji(rank)}</div>` : ''}
+    </div>` : ''}
+    <div class="leader-card-info">
+      <div class="card-name">${jar.student}</div>
+      <div class="card-grade">${jar.grade} клас</div>
+      <div class="amount-value">${jar.amountText || '—'}</div>
+      <div class="amount-label">зібрано</div>
+      ${historyById[jar.id]?.length >= 2 ? `<button class="card-toggle" onclick="toggleCard(this)">📈 Динаміка збору</button>` : ''}
+      <div class="card-details">
+        ${sparklineHTML(historyById[jar.id], color)}
+        ${p !== null ? `
+          <div class="progress-wrap" style="max-width:280px">
+            <div class="progress-bar" style="width:${p}%;background:${color}"></div>
+          </div>
+          <div class="progress-label">${p}% від мети ${jar.goalText}</div>
+        ` : ''}
+      </div>
+      <a class="card-link" href="${jar.jarUrl}" target="_blank" rel="noopener">💳 Задонатити</a>
+    </div>
+  </div>`;
+}
+
+function buildRankMap(jars) {
+  const ranked = [...jars].filter(j => j.amountNum != null).sort((a, b) => b.amountNum - a.amountNum);
+  const map = {};
+  ranked.forEach((j, i) => map[j.id] = i + 1);
+  return map;
+}
+
+function cardHTML(jar, rank, isLeader) {
+  const info = CAT_INFO[jar.category] || {};
+  const slug = info.slug || '';
+  const color = info.color || '#666';
+  const vid = VIDEOS[jar.id];
+  const thumb = vid ? `https://img.youtube.com/vi/${vid}/mqdefault.jpg` : null;
+  const p = jar.amountNum != null && jar.goalNum ? pct(jar.amountNum, jar.goalNum) : null;
+  const safeStudent = jar.student.replace(/'/g, "\\'");
+
+  return `
+  <div class="card${isLeader ? ' is-leader' : ''}" ${isLeader ? `style="border-color:${color}"` : ''}>
+    ${thumb ? `
+    <div class="card-video" onclick="openVideo('${vid}','${safeStudent}')">
+      <img src="${thumb}" alt="${jar.student}" loading="lazy">
+      <div class="play-overlay">▶</div>
+      ${rank ? `<div class="rank-badge">${rankEmoji(rank)}</div>` : ''}
+      ${isLeader ? '<div class="leader-badge-overlay">🏆 Лідер</div>' : ''}
+    </div>` : ''}
+    <div class="card-body">
+      ${activeFilter === '' ? `<span class="cat-badge cat-${slug}">${jar.category}</span>` : ''}
+      <div class="card-name">${jar.student}</div>
+      <div class="card-grade">${jar.grade} клас</div>
+      <div class="amount-value">${jar.amountText || '—'}</div>
+      <div class="amount-label">зібрано</div>
+      ${historyById[jar.id]?.length >= 2 ? `<button class="card-toggle" onclick="toggleCard(this)">📈 Динаміка збору</button>` : ''}
+      <div class="card-details">
+        ${sparklineHTML(historyById[jar.id], color)}
+        ${p !== null ? `
+          <div class="progress-wrap">
+            <div class="progress-bar" style="width:${p}%;background:${color}"></div>
+          </div>
+          <div class="progress-label">${p}% від мети ${jar.goalText}</div>
+        ` : ''}
+      </div>
+      <a class="card-link" href="${jar.jarUrl}" target="_blank" rel="noopener">💳 Задонатити</a>
+      ${jar.hasError ? '<div class="error-chip">⚠ дані застарілі</div>' : ''}
+    </div>
+  </div>`;
+}
+
 function renderStats(jars) {
   const withData = jars.filter(j => j.amountNum != null);
   const total = withData.reduce((s, j) => s + j.amountNum, 0);
   document.getElementById('statTotal').textContent = fmt(total);
   document.getElementById('statCount').textContent = jars.length;
-
   const leader = [...jars].sort((a, b) => (b.amountNum || 0) - (a.amountNum || 0))[0];
-  if (leader && leader.amountNum) {
-    const name = leader.student.split(' ')[0]; // перше ім'я
-    document.getElementById('statLeader').textContent = name;
+  if (leader?.amountNum) {
+    document.getElementById('statLeader').textContent = leader.student.split(' ')[0];
   }
-}
-
-function renderGrid(jars) {
-  const filtered = activeFilter
-    ? jars.filter(j => j.category === activeFilter)
-    : jars;
-
-  const sorted = [...filtered].sort((a, b) => {
-    if (activeSort === 'amount') return (b.amountNum || -1) - (a.amountNum || -1);
-    if (activeSort === 'name')  return a.student.localeCompare(b.student, 'uk');
-    if (activeSort === 'grade') return parseInt(a.grade) - parseInt(b.grade);
-    return 0;
-  });
-
-  // Build global rank by amount for all jars (not filtered)
-  const ranked = [...jars]
-    .filter(j => j.amountNum != null)
-    .sort((a, b) => b.amountNum - a.amountNum);
-  const rankMap = {};
-  ranked.forEach((j, i) => rankMap[j.id] = i + 1);
-
-  const grid = document.getElementById('grid');
-  if (sorted.length === 0) {
-    grid.innerHTML = '<div class="loading"><span>Немає даних</span></div>';
-    return;
-  }
-
-  grid.innerHTML = sorted.map(jar => {
-    const rank = rankMap[jar.id];
-    const slug = CAT_SLUG[jar.category] || '';
-    const color = CAT_COLOR[jar.category] || '#666';
-    const p = jar.amountNum != null && jar.goalNum ? pct(jar.amountNum, jar.goalNum) : null;
-
-    return `
-    <div class="card">
-      <div class="card-rank ${rank === 1 ? 'top1' : ''}">${rank ? rankEmoji(rank) : ''}</div>
-      <span class="cat-badge cat-${slug}">${jar.category}</span>
-      <div class="card-name">${jar.student}</div>
-      <div class="card-grade">${jar.grade} клас</div>
-      <div class="amount-block">
-        <div class="amount-value">${jar.amountText || '—'}</div>
-        <div class="amount-label">зібрано</div>
-      </div>
-      ${p !== null ? `
-        <div class="progress-wrap">
-          <div class="progress-bar" style="width:${p}%;background:${color}"></div>
-        </div>
-        <div class="progress-label">${p}% від мети ${jar.goalText}</div>
-      ` : ''}
-      <a class="card-link" href="${jar.jarUrl}" target="_blank" rel="noopener">
-        💳 Задонатити
-      </a>
-      ${jar.hasError ? '<div class="error-chip">⚠ дані застарілі</div>' : ''}
-    </div>`;
-  }).join('');
 }
 
 function render() {
   renderStats(allJars);
-  renderGrid(allJars);
+  renderChart(activeFilter);
+
+  const leaderSection = document.getElementById('leaderSection');
+  const catBanner = document.getElementById('catBanner');
+  const othersLabel = document.getElementById('othersLabel');
+  const rankMap = buildRankMap(allJars);
+
+  if (!activeFilter) {
+    catBanner.classList.remove('visible');
+    leaderSection.classList.remove('visible');
+    othersLabel.classList.remove('visible');
+
+    const sorted = [...allJars].sort((a, b) => {
+      if (activeSort === 'amount') return (b.amountNum || -1) - (a.amountNum || -1);
+      if (activeSort === 'name')   return a.student.localeCompare(b.student, 'uk');
+      if (activeSort === 'grade')  return parseInt(a.grade) - parseInt(b.grade);
+      return 0;
+    });
+    document.getElementById('grid').innerHTML = sorted.map(j => cardHTML(j, rankMap[j.id], false)).join('');
+    return;
+  }
+
+  // Category view
+  const info = CAT_INFO[activeFilter];
+  catBanner.style.borderLeftColor = info?.color || '#ccc';
+  document.getElementById('catBannerTitle').textContent = `${info?.icon || ''} ${activeFilter}`;
+  document.getElementById('catBannerDesc').textContent = info?.desc || '';
+  catBanner.classList.add('visible');
+
+  const catJars = allJars.filter(j => j.category === activeFilter);
+  const catWithData = catJars.filter(j => j.amountNum != null);
+
+  let leaderId = null;
+  if (catWithData.length > 0) {
+    const leader = [...catWithData].sort((a, b) => b.amountNum - a.amountNum)[0];
+    leaderId = leader.id;
+    document.getElementById('leaderCardWrap').innerHTML = leaderCardHTML(leader, rankMap[leader.id]);
+    leaderSection.classList.add('visible');
+  }
+
+  const others = catJars.filter(j => j.id !== leaderId).sort((a, b) => {
+    if (activeSort === 'amount') return (b.amountNum || -1) - (a.amountNum || -1);
+    if (activeSort === 'name')   return a.student.localeCompare(b.student, 'uk');
+    if (activeSort === 'grade')  return parseInt(a.grade) - parseInt(b.grade);
+    return 0;
+  });
+
+  if (others.length > 0) {
+    othersLabel.classList.add('visible');
+    document.getElementById('grid').innerHTML = others.map(j => cardHTML(j, rankMap[j.id], false)).join('');
+  } else {
+    othersLabel.classList.remove('visible');
+    document.getElementById('grid').innerHTML = '';
+  }
 }
+
+function toggleCard(btn) {
+  const details = btn.parentElement.querySelector('.card-details');
+  const open = details.classList.toggle('open');
+  btn.textContent = open ? '▲ Сховати' : '📈 Динаміка збору';
+}
+
+function renderChart(filter) {
+  const wrap = document.getElementById('chartCanvasWrap');
+  const note = document.getElementById('chartNote');
+
+  if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+
+  if (!historyData?.snapshots || historyData.snapshots.length < 2) {
+    wrap.innerHTML = '<div class="chart-empty">📊 Графік наповнюється... Дані збираються кожні 30 хв.</div>';
+    return;
+  }
+
+  if (!document.getElementById('progressChart')) {
+    wrap.innerHTML = '<canvas id="progressChart"></canvas>';
+  }
+
+  const snaps = historyData.snapshots;
+  note.textContent = '';
+  const labels = snaps.map(s => {
+    const d = new Date(s.ts);
+    return d.toLocaleString('uk-UA', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  });
+
+  let datasets;
+  if (filter && CAT_INFO[filter]) {
+    const ids = allJars.filter(j => j.category === filter).map(j => j.id);
+    const color = CAT_INFO[filter].color;
+    datasets = [{
+      label: filter,
+      data: snaps.map(s => ids.reduce((sum, id) => sum + (s.byId?.[id] || 0), 0)),
+      borderColor: color, backgroundColor: color + '18',
+      borderWidth: 2, fill: true, tension: 0.3, pointRadius: 3,
+    }];
+  } else {
+    datasets = [{
+      label: 'Загалом ₴',
+      data: snaps.map(s => s.total),
+      borderColor: '#7c3aed', backgroundColor: 'rgba(124,58,237,0.07)',
+      borderWidth: 2, fill: true, tension: 0.3, pointRadius: 3,
+    }];
+  }
+
+  chartInstance = new Chart(document.getElementById('progressChart'), {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: c => `${c.dataset.label}: ${c.parsed.y.toLocaleString('uk-UA')} ₴` } },
+      },
+      scales: {
+        x: { ticks: { maxTicksLimit: 8, font: { size: 11 }, color: '#9ca3af' }, grid: { display: false } },
+        y: { ticks: { callback: v => v.toLocaleString('uk-UA'), font: { size: 11 }, color: '#9ca3af' }, grid: { color: 'rgba(0,0,0,0.04)' } },
+      },
+    },
+  });
+}
+
+// Video modal
+function openVideo(videoId, studentName) {
+  document.getElementById('modalStudentName').textContent = studentName;
+  document.getElementById('modalFrame').src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideo() {
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('modalFrame').src = '';
+  document.body.style.overflow = '';
+}
+function handleModalBg(e) { if (e.target === document.getElementById('modal')) closeVideo(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
 
 // Filter tabs
 document.getElementById('filterTabs').addEventListener('click', e => {
@@ -415,27 +838,39 @@ document.getElementById('filterTabs').addEventListener('click', e => {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   tab.classList.add('active');
   activeFilter = tab.dataset.cat;
-  renderGrid(allJars);
+  render();
 });
 
-// Sort select
+// Sort
 document.getElementById('sortSelect').addEventListener('change', e => {
   activeSort = e.target.value;
-  renderGrid(allJars);
+  render();
 });
 
 // Load data
 async function loadData() {
   try {
-    const res = await fetch('data/jars.json?_=' + Date.now());
-    const data = await res.json();
+    const [dataRes, histRes] = await Promise.all([
+      fetch('data/jars.json?_=' + Date.now()),
+      fetch('data/history.json?_=' + Date.now()).catch(() => null),
+    ]);
+    const data = await dataRes.json();
+    const history = histRes?.ok ? await histRes.json().catch(() => null) : null;
 
-    if (!data.jars || data.jars.length === 0) {
-      document.getElementById('grid').innerHTML =
-        '<div class="loading"><span>Дані ще збираються... Зачекайте першого запуску GitHub Actions.</span></div>';
-      return;
+    if (history?.snapshots) {
+      for (const snap of history.snapshots) {
+        for (const [id, amount] of Object.entries(snap.byId || {})) {
+          if (!historyById[id]) historyById[id] = [];
+          if (amount != null) historyById[id].push(amount);
+        }
+      }
     }
 
+    if (!data.jars?.length) {
+      document.getElementById('grid').innerHTML = '<div class="loading">Дані ще збираються... Зачекайте першого запуску.</div>';
+      return;
+    }
+    historyData = history;
     allJars = data.jars;
     render();
 
@@ -445,8 +880,7 @@ async function loadData() {
         'Дані оновлено: ' + dt.toLocaleString('uk-UA', { dateStyle: 'short', timeStyle: 'short' });
     }
   } catch (err) {
-    document.getElementById('grid').innerHTML =
-      '<div class="loading"><span>Помилка завантаження даних 😔</span></div>';
+    document.getElementById('grid').innerHTML = '<div class="loading">Помилка завантаження 😔</div>';
   }
 }
 

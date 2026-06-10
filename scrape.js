@@ -128,6 +128,21 @@ async function main() {
 
   const ok    = results.filter(r => r.amountNum !== null);
   const total = ok.reduce((s, r) => s + r.amountNum, 0);
+
+  // Append history snapshot
+  const historyPath = path.join(__dirname, 'data', 'history.json');
+  let history = { snapshots: [] };
+  if (fs.existsSync(historyPath)) {
+    try { history = JSON.parse(fs.readFileSync(historyPath, 'utf8')); } catch (_) {}
+  }
+  history.snapshots.push({
+    ts: new Date().toISOString(),
+    total,
+    byId: Object.fromEntries(results.map(r => [r.id, r.amountNum])),
+  });
+  if (history.snapshots.length > 336) history.snapshots = history.snapshots.slice(-336);
+  fs.writeFileSync(historyPath, JSON.stringify(history), 'utf8');
+
   console.log(`\n✓ ${ok.length}/${results.length} банок зібрано`);
   console.log(`Загалом: ${total.toLocaleString('uk-UA')} ₴`);
 }
