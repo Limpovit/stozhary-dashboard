@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T14:54:11.502Z",
+  "updatedAt": "2026-06-11T18:01:09.409Z",
   "jars": [
     {
       "id": "2XrzwMqePn",
@@ -14,7 +14,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:10.962Z"
+      "updatedAt": "2026-06-11T18:00:29.665Z"
     },
     {
       "id": "W6XwXiXi3",
@@ -24,12 +24,12 @@
       "jarUrl": "https://send.monobank.ua/jar/W6XwXiXi3",
       "jarName": "Марія Горбоконь",
       "ownerName": "Ілля П. збирає",
-      "amountText": "1 950 ₴",
-      "amountNum": 1950,
+      "amountText": "2 450 ₴",
+      "amountNum": 2450,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:14.327Z"
+      "updatedAt": "2026-06-11T18:00:32.043Z"
     },
     {
       "id": "922kecxCQw",
@@ -44,7 +44,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:17.606Z"
+      "updatedAt": "2026-06-11T18:00:34.275Z"
     },
     {
       "id": "8XPX4oyhHq",
@@ -59,7 +59,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:20.714Z"
+      "updatedAt": "2026-06-11T18:00:36.534Z"
     },
     {
       "id": "5QTG83y6eG",
@@ -74,7 +74,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:24.106Z"
+      "updatedAt": "2026-06-11T18:00:38.788Z"
     },
     {
       "id": "4anJ7oFxgJ",
@@ -89,7 +89,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:27.803Z"
+      "updatedAt": "2026-06-11T18:00:41.348Z"
     },
     {
       "id": "9BfZTQ2n4q",
@@ -104,7 +104,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:31.319Z"
+      "updatedAt": "2026-06-11T18:00:43.494Z"
     },
     {
       "id": "7KSGo48SLf",
@@ -114,12 +114,12 @@
       "jarUrl": "https://send.monobank.ua/jar/7KSGo48SLf",
       "jarName": "Ольга Шрамко",
       "ownerName": "Марина Г. збирає",
-      "amountText": "20 513 ₴",
-      "amountNum": 20513,
+      "amountText": "22 213 ₴",
+      "amountNum": 22213,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:34.629Z"
+      "updatedAt": "2026-06-11T18:00:45.803Z"
     },
     {
       "id": "AXA934Q9Kv",
@@ -129,12 +129,12 @@
       "jarUrl": "https://send.monobank.ua/jar/AXA934Q9Kv",
       "jarName": "Ольга Кузьменко",
       "ownerName": "Марина Г. збирає",
-      "amountText": "23 519 ₴",
-      "amountNum": 23519,
+      "amountText": "23 619 ₴",
+      "amountNum": 23619,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:37.983Z"
+      "updatedAt": "2026-06-11T18:00:47.971Z"
     },
     {
       "id": "96hkTy4SJk",
@@ -144,12 +144,12 @@
       "jarUrl": "https://send.monobank.ua/jar/96hkTy4SJk",
       "jarName": "Міла Затолокіна дух",
       "ownerName": "Марина Г. збирає",
-      "amountText": "14 720 ₴",
-      "amountNum": 14720,
+      "amountText": "14 820 ₴",
+      "amountNum": 14820,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:41.506Z"
+      "updatedAt": "2026-06-11T18:00:50.340Z"
     },
     {
       "id": "2g5RzDYKxc",
@@ -164,7 +164,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:44.868Z"
+      "updatedAt": "2026-06-11T18:00:52.797Z"
     },
     {
       "id": "ADjkdb6bEk",
@@ -179,7 +179,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:48.433Z"
+      "updatedAt": "2026-06-11T18:00:54.528Z"
     },
     {
       "id": "cubfarQkJ",
@@ -194,7 +194,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:51.780Z"
+      "updatedAt": "2026-06-11T18:00:56.672Z"
     },
     {
       "id": "7ZEmbjBYx4",
@@ -209,7 +209,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:55.063Z"
+      "updatedAt": "2026-06-11T18:00:58.995Z"
     },
     {
       "id": "7doAjBszk9",
@@ -219,12 +219,12 @@
       "jarUrl": "https://send.monobank.ua/jar/7doAjBszk9",
       "jarName": "Яромир Гацько",
       "ownerName": "Ілля П. збирає",
-      "amountText": "37 030 ₴",
-      "amountNum": 37030,
+      "amountText": "37 130 ₴",
+      "amountNum": 37130,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:53:58.692Z"
+      "updatedAt": "2026-06-11T18:01:01.210Z"
     },
     {
       "id": "1bwGnTwRm",
@@ -239,7 +239,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:54:01.658Z"
+      "updatedAt": "2026-06-11T18:01:03.427Z"
     },
     {
       "id": "9CHe2a9Wz",
@@ -254,7 +254,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:54:05.201Z"
+      "updatedAt": "2026-06-11T18:01:05.582Z"
     },
     {
       "id": "3ZB3YtdSvB",
@@ -264,12 +264,12 @@
       "jarUrl": "https://send.monobank.ua/jar/3ZB3YtdSvB",
       "jarName": "Любомир Пушняк",
       "ownerName": "Ілля П. збирає",
-      "amountText": "3 168 ₴",
-      "amountNum": 3168,
+      "amountText": "3 834 ₴",
+      "amountNum": 3834,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:54:08.811Z"
+      "updatedAt": "2026-06-11T18:01:07.722Z"
     },
     {
       "id": "stHiibiKi",
@@ -279,12 +279,12 @@
       "jarUrl": "https://send.monobank.ua/jar/stHiibiKi",
       "jarName": "Софія Волощук",
       "ownerName": "Марина Г. збирає",
-      "amountText": "23 100 ₴",
-      "amountNum": 23100,
+      "amountText": "24 600 ₴",
+      "amountNum": 24600,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-11T14:54:11.477Z"
+      "updatedAt": "2026-06-11T18:01:09.385Z"
     }
   ]
 }
