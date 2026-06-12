@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-12T03:33:53.042Z",
+  "updatedAt": "2026-06-12T08:12:24.690Z",
   "jars": [
     {
       "id": "2XrzwMqePn",
@@ -14,7 +14,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:07.828Z"
+      "updatedAt": "2026-06-12T08:11:36.653Z"
     },
     {
       "id": "W6XwXiXi3",
@@ -29,7 +29,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:10.044Z"
+      "updatedAt": "2026-06-12T08:11:39.623Z"
     },
     {
       "id": "922kecxCQw",
@@ -44,7 +44,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:12.555Z"
+      "updatedAt": "2026-06-12T08:11:41.977Z"
     },
     {
       "id": "8XPX4oyhHq",
@@ -59,7 +59,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:15.202Z"
+      "updatedAt": "2026-06-12T08:11:44.699Z"
     },
     {
       "id": "5QTG83y6eG",
@@ -74,7 +74,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:17.855Z"
+      "updatedAt": "2026-06-12T08:11:47.466Z"
     },
     {
       "id": "4anJ7oFxgJ",
@@ -89,7 +89,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:20.322Z"
+      "updatedAt": "2026-06-12T08:11:49.853Z"
     },
     {
       "id": "9BfZTQ2n4q",
@@ -104,7 +104,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:22.877Z"
+      "updatedAt": "2026-06-12T08:11:52.584Z"
     },
     {
       "id": "7KSGo48SLf",
@@ -114,12 +114,12 @@
       "jarUrl": "https://send.monobank.ua/jar/7KSGo48SLf",
       "jarName": "Ольга Шрамко",
       "ownerName": "Марина Г. збирає",
-      "amountText": "25 663 ₴",
-      "amountNum": 25663,
+      "amountText": "26 163 ₴",
+      "amountNum": 26163,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:25.644Z"
+      "updatedAt": "2026-06-12T08:11:54.940Z"
     },
     {
       "id": "AXA934Q9Kv",
@@ -129,12 +129,12 @@
       "jarUrl": "https://send.monobank.ua/jar/AXA934Q9Kv",
       "jarName": "Ольга Кузьменко",
       "ownerName": "Марина Г. збирає",
-      "amountText": "24 400 ₴",
-      "amountNum": 24400,
+      "amountText": "24 700 ₴",
+      "amountNum": 24700,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:28.171Z"
+      "updatedAt": "2026-06-12T08:11:57.711Z"
     },
     {
       "id": "96hkTy4SJk",
@@ -149,7 +149,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:30.843Z"
+      "updatedAt": "2026-06-12T08:12:00.072Z"
     },
     {
       "id": "2g5RzDYKxc",
@@ -164,7 +164,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:33.537Z"
+      "updatedAt": "2026-06-12T08:12:03.052Z"
     },
     {
       "id": "ADjkdb6bEk",
@@ -179,7 +179,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:36.106Z"
+      "updatedAt": "2026-06-12T08:12:05.968Z"
     },
     {
       "id": "cubfarQkJ",
@@ -189,12 +189,12 @@
       "jarUrl": "https://send.monobank.ua/jar/cubfarQkJ",
       "jarName": "Софія Гук",
       "ownerName": "Марина Г. збирає",
-      "amountText": "1 500 ₴",
-      "amountNum": 1500,
+      "amountText": "4 800 ₴",
+      "amountNum": 4800,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:38.692Z"
+      "updatedAt": "2026-06-12T08:12:08.227Z"
     },
     {
       "id": "7ZEmbjBYx4",
@@ -209,7 +209,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:41.194Z"
+      "updatedAt": "2026-06-12T08:12:10.575Z"
     },
     {
       "id": "7doAjBszk9",
@@ -224,7 +224,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:43.471Z"
+      "updatedAt": "2026-06-12T08:12:13.102Z"
     },
     {
       "id": "1bwGnTwRm",
@@ -239,7 +239,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:46.084Z"
+      "updatedAt": "2026-06-12T08:12:15.969Z"
     },
     {
       "id": "9CHe2a9Wz",
@@ -254,7 +254,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:48.357Z"
+      "updatedAt": "2026-06-12T08:12:18.928Z"
     },
     {
       "id": "3ZB3YtdSvB",
@@ -269,7 +269,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:50.721Z"
+      "updatedAt": "2026-06-12T08:12:21.918Z"
     },
     {
       "id": "stHiibiKi",
@@ -279,12 +279,12 @@
       "jarUrl": "https://send.monobank.ua/jar/stHiibiKi",
       "jarName": "Софія Волощук",
       "ownerName": "Марина Г. збирає",
-      "amountText": "26 050 ₴",
-      "amountNum": 26050,
+      "amountText": "26 150 ₴",
+      "amountNum": 26150,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-12T03:33:53.013Z"
+      "updatedAt": "2026-06-12T08:12:24.663Z"
     }
   ]
 }
