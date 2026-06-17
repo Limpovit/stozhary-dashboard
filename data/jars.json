@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-17T17:49:12.861Z",
+  "updatedAt": "2026-06-17T19:56:58.195Z",
   "jars": [
     {
       "id": "2XrzwMqePn",
@@ -14,7 +14,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:09.591Z"
+      "updatedAt": "2026-06-17T19:56:18.038Z"
     },
     {
       "id": "W6XwXiXi3",
@@ -29,7 +29,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:13.263Z"
+      "updatedAt": "2026-06-17T19:56:20.046Z"
     },
     {
       "id": "922kecxCQw",
@@ -44,7 +44,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:16.854Z"
+      "updatedAt": "2026-06-17T19:56:22.516Z"
     },
     {
       "id": "8XPX4oyhHq",
@@ -59,7 +59,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:20.396Z"
+      "updatedAt": "2026-06-17T19:56:24.944Z"
     },
     {
       "id": "5QTG83y6eG",
@@ -74,7 +74,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:24.055Z"
+      "updatedAt": "2026-06-17T19:56:27.326Z"
     },
     {
       "id": "4anJ7oFxgJ",
@@ -89,7 +89,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:27.663Z"
+      "updatedAt": "2026-06-17T19:56:29.426Z"
     },
     {
       "id": "9BfZTQ2n4q",
@@ -104,7 +104,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:31.207Z"
+      "updatedAt": "2026-06-17T19:56:31.789Z"
     },
     {
       "id": "7KSGo48SLf",
@@ -114,12 +114,12 @@
       "jarUrl": "https://send.monobank.ua/jar/7KSGo48SLf",
       "jarName": "Ольга Шрамко",
       "ownerName": "Марина Г. збирає",
-      "amountText": "40 380.74 ₴",
-      "amountNum": 40380,
+      "amountText": "40 580.74 ₴",
+      "amountNum": 40580,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:34.753Z"
+      "updatedAt": "2026-06-17T19:56:34.172Z"
     },
     {
       "id": "AXA934Q9Kv",
@@ -134,7 +134,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:38.004Z"
+      "updatedAt": "2026-06-17T19:56:36.302Z"
     },
     {
       "id": "96hkTy4SJk",
@@ -149,7 +149,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:41.076Z"
+      "updatedAt": "2026-06-17T19:56:38.357Z"
     },
     {
       "id": "2g5RzDYKxc",
@@ -164,7 +164,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:44.676Z"
+      "updatedAt": "2026-06-17T19:56:40.553Z"
     },
     {
       "id": "ADjkdb6bEk",
@@ -174,12 +174,12 @@
       "jarUrl": "https://send.monobank.ua/jar/ADjkdb6bEk",
       "jarName": "Глєб Федьков",
       "ownerName": "Юлія П. збирає",
-      "amountText": "6 700 ₴",
-      "amountNum": 6700,
+      "amountText": "6 800 ₴",
+      "amountNum": 6800,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:48.248Z"
+      "updatedAt": "2026-06-17T19:56:42.782Z"
     },
     {
       "id": "cubfarQkJ",
@@ -194,7 +194,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:51.397Z"
+      "updatedAt": "2026-06-17T19:56:45.216Z"
     },
     {
       "id": "7ZEmbjBYx4",
@@ -209,7 +209,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:55.108Z"
+      "updatedAt": "2026-06-17T19:56:47.359Z"
     },
     {
       "id": "7doAjBszk9",
@@ -219,12 +219,12 @@
       "jarUrl": "https://send.monobank.ua/jar/7doAjBszk9",
       "jarName": "Яромир Гацько",
       "ownerName": "Ілля П. збирає",
-      "amountText": "44 653.87 ₴",
-      "amountNum": 44653,
+      "amountText": "44 853.87 ₴",
+      "amountNum": 44853,
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:48:58.505Z"
+      "updatedAt": "2026-06-17T19:56:49.721Z"
     },
     {
       "id": "1bwGnTwRm",
@@ -239,7 +239,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:49:02.080Z"
+      "updatedAt": "2026-06-17T19:56:51.935Z"
     },
     {
       "id": "9CHe2a9Wz",
@@ -254,7 +254,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:49:05.685Z"
+      "updatedAt": "2026-06-17T19:56:53.574Z"
     },
     {
       "id": "3ZB3YtdSvB",
@@ -269,7 +269,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:49:09.269Z"
+      "updatedAt": "2026-06-17T19:56:55.883Z"
     },
     {
       "id": "stHiibiKi",
@@ -284,7 +284,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-06-17T17:49:12.836Z"
+      "updatedAt": "2026-06-17T19:56:58.172Z"
     }
   ]
 }
