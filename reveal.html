@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Стожари змін 2026 — Фінал</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #060e06;
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── PIN SCREEN ── */
+#pinScreen {
+  position: fixed; inset: 0; z-index: 100;
+  background: #060e06;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 20px;
+}
+.pin-logo { height: 56px; margin-bottom: 4px; }
+.pin-title { font-size: 1rem; font-weight: 600; opacity: 0.5; letter-spacing: 0.05em; }
+.pin-dots { display: flex; gap: 14px; margin: 4px 0; }
+.pin-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #5da82c; transition: background 0.15s; }
+.pin-dot.filled { background: #5da82c; }
+.pin-keypad { display: grid; grid-template-columns: repeat(3, 72px); gap: 10px; margin-top: 4px; }
+.pin-key {
+  height: 72px; border-radius: 14px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  color: #fff; font-size: 1.6rem; font-weight: 700; font-family: inherit;
+  cursor: pointer; transition: all 0.12s;
+}
+.pin-key:hover { background: rgba(93,168,44,0.25); border-color: #5da82c; }
+.pin-key:active { transform: scale(0.93); }
+.pin-error { color: #ef4444; font-size: 0.82rem; min-height: 18px; font-weight: 600; }
+
+/* ── MAIN ── */
+#mainScreen {
+  position: fixed; inset: 0; z-index: 10;
+  display: none; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 32px;
+}
+
+/* INTRO */
+#introView { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.intro-logo { height: 60px; }
+.intro-eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; opacity: 0.45; text-transform: uppercase; margin-bottom: -8px; }
+.intro-title { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; }
+.intro-title em { color: #5da82c; font-style: normal; }
+.intro-sub { font-size: 1.05rem; opacity: 0.45; margin-top: -4px; }
+.launch-btn {
+  margin-top: 12px;
+  padding: 22px 64px;
+  background: linear-gradient(135deg, #3d7a1a, #5da82c);
+  border: none; border-radius: 60px;
+  color: #fff; font-size: 1.5rem; font-weight: 900; font-family: inherit;
+  cursor: pointer; letter-spacing: 0.01em;
+  box-shadow: 0 0 50px rgba(93,168,44,0.45);
+  transition: transform 0.15s, box-shadow 0.15s;
+  animation: glow 2.2s ease-in-out infinite;
+}
+.launch-btn:hover { transform: scale(1.06); box-shadow: 0 0 80px rgba(93,168,44,0.7); }
+.launch-btn:active { transform: scale(0.97); }
+@keyframes glow {
+  0%,100% { box-shadow: 0 0 50px rgba(93,168,44,0.45); }
+  50% { box-shadow: 0 0 80px rgba(93,168,44,0.75), 0 0 120px rgba(93,168,44,0.3); }
+}
+
+/* LOADING */
+#loadingView { display: none; flex-direction: column; align-items: center; gap: 28px; }
+.spinner {
+  width: 72px; height: 72px;
+  border: 4px solid rgba(93,168,44,0.15);
+  border-top-color: #5da82c;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-title { font-size: 1.6rem; font-weight: 800; }
+#loadingStatus { font-size: 1rem; opacity: 0.5; min-height: 24px; transition: opacity 0.3s; }
+
+/* RESULTS */
+#resultsView { display: none; flex-direction: column; align-items: center; gap: 32px; width: 100%; max-width: 1100px; }
+.total-wrap { text-align: center; }
+.total-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.4; margin-bottom: 6px; }
+#totalAmount { font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 900; color: #5da82c; line-height: 1; }
+.total-sub { font-size: 0.9rem; opacity: 0.35; margin-top: 4px; }
+
+.cats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px; width: 100%;
+}
+.cat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 20px 24px;
+  display: flex; gap: 18px; align-items: center;
+  opacity: 0; transform: translateY(28px) scale(0.96);
+  transition: opacity 0.55s cubic-bezier(0.34,1.56,0.64,1),
+              transform 0.55s cubic-bezier(0.34,1.56,0.64,1);
+}
+.cat-card.show { opacity: 1; transform: none; }
+.cat-thumb { width: 88px; height: 88px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
+.cat-info { flex: 1; text-align: left; }
+.cat-badge { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; margin-bottom: 5px; }
+.cat-winner { font-size: 1.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+.cat-amount { font-size: 1.55rem; font-weight: 900; }
+.cat-crown { font-size: 2.2rem; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<!-- PIN -->
+<div id="pinScreen">
+  <img src="logo.png" alt="ACE School" class="pin-logo">
+  <div class="pin-title">Введіть PIN для доступу</div>
+  <div class="pin-dots" id="pinDots">
+    <div class="pin-dot"></div><div class="pin-dot"></div>
+    <div class="pin-dot"></div><div class="pin-dot"></div>
+  </div>
+  <div class="pin-keypad">
+    <button class="pin-key" onclick="pinKey('1')">1</button>
+    <button class="pin-key" onclick="pinKey('2')">2</button>
+    <button class="pin-key" onclick="pinKey('3')">3</button>
+    <button class="pin-key" onclick="pinKey('4')">4</button>
+    <button class="pin-key" onclick="pinKey('5')">5</button>
+    <button class="pin-key" onclick="pinKey('6')">6</button>
+    <button class="pin-key" onclick="pinKey('7')">7</button>
+    <button class="pin-key" onclick="pinKey('8')">8</button>
+    <button class="pin-key" onclick="pinKey('9')">9</button>
+    <button class="pin-key" onclick="pinClear()" style="font-size:1.1rem;opacity:0.45">⌫</button>
+    <button class="pin-key" onclick="pinKey('0')">0</button>
+    <div></div>
+  </div>
+  <div class="pin-error" id="pinError"></div>
+</div>
+
+<!-- MAIN -->
+<div id="mainScreen">
+  <div id="introView">
+    <img src="logo.png" alt="ACE School" class="intro-logo">
+    <div class="intro-eyebrow">Благодійна премія</div>
+    <h1 class="intro-title">Стожари змін<br><em>2026</em></h1>
+    <p class="intro-sub">«ВАРТОВІ», бо варті!</p>
+    <button class="launch-btn" onclick="launch()">🚀 Запустити фінальне оновлення</button>
+  </div>
+
+  <div id="loadingView">
+    <div class="spinner"></div>
+    <div class="loading-title">Оновлюємо результати...</div>
+    <div id="loadingStatus">Запускаємо збір даних</div>
+  </div>
+
+  <div id="resultsView">
+    <div class="total-wrap">
+      <div class="total-eyebrow">Разом зібрано</div>
+      <div id="totalAmount">0 ₴</div>
+      <div class="total-sub">від учнів ACE School</div>
+    </div>
+    <div class="cats-grid" id="catsGrid"></div>
+  </div>
+</div>
+
+<script>
+const PIN_CODE = '2026';
+const CAT_ORDER = ['Вартові слова','Вартові життя','Вартові духу','Вартові логіки'];
+const CAT_COLORS = {
+  'Вартові слова':'#7c3aed','Вартові життя':'#16a34a',
+  'Вартові духу':'#ea580c','Вартові логіки':'#2563eb',
+};
+const VIDEOS = {
+  '2XrzwMqePn':'v4diMuX1BOc','W6XwXiXi3':'_1_Q5GXq0Qc','922kecxCQw':'hZS2aZo3ab8',
+  '8XPX4oyhHq':'kmRW0mL7D84','5QTG83y6eG':'lmGrn7m6RRI','4anJ7oFxgJ':'Tsji0Olg5qE',
+  '9BfZTQ2n4q':'t9bbCMP03g8','7KSGo48SLf':'oI1lgXOXty0','AXA934Q9Kv':'euM8vNMXIUc',
+  '96hkTy4SJk':'VceLov37rTo','2g5RzDYKxc':'cp9np9c9cbU','ADjkdb6bEk':'Pl6TuHX_dxc',
+  'cubfarQkJ':'tNdeLABM6yc','7ZEmbjBYx4':'0AfBLduSCBA','7doAjBszk9':'qVvQLjICvxA',
+  '1bwGnTwRm':'bwesfWIoraU','9CHe2a9Wz':'As_9lJicYSM','3ZB3YtdSvB':'Xp2O5GlS0kU',
+  'stHiibiKi':'Q3N-WRikj0k',
+};
+
+// ── PIN ──
+let pin = '';
+function pinKey(d) {
+  if (pin.length >= PIN_CODE.length) return;
+  pin += d;
+  updateDots();
+  if (pin.length === PIN_CODE.length) {
+    if (pin === PIN_CODE) {
+      document.getElementById('pinScreen').style.display = 'none';
+      document.getElementById('mainScreen').style.display = 'flex';
+    } else {
+      document.getElementById('pinError').textContent = '❌ Невірний PIN';
+      setTimeout(() => { pin = ''; updateDots(); document.getElementById('pinError').textContent = ''; }, 900);
+    }
+  }
+}
+function pinClear() { pin = pin.slice(0,-1); updateDots(); }
+function updateDots() {
+  document.querySelectorAll('.pin-dot').forEach((d,i) => d.classList.toggle('filled', i < pin.length));
+}
+
+// ── LAUNCH ──
+async function launch() {
+  showView('loadingView');
+  const initTs = await getTs();
+
+  const statusMsgs = [
+    '🏦 Парсимо Monobank банки...','💰 Рахуємо донати...',
+    '📊 Підраховуємо результати...','🏆 Визначаємо переможців...',
+    '⭐ Майже готово...',
+  ];
+  let si = 0;
+  const msgTimer = setInterval(() => { setStatus(statusMsgs[si++ % statusMsgs.length]); }, 2500);
+
+  const minDelay = delay(6000);
+  const freshData = await Promise.all([minDelay, waitForUpdate(initTs)]).then(r => r[1]);
+
+  clearInterval(msgTimer);
+  await reveal(freshData);
+}
+
+async function getTs() {
+  try { const r = await fetch(`data/jars.json?_=${Date.now()}`); const d = await r.json(); return d.updatedAt; }
+  catch { return null; }
+}
+async function waitForUpdate(initTs) {
+  for (let i = 0; i < 60; i++) {
+    await delay(5000);
+    try {
+      const r = await fetch(`data/jars.json?_=${Date.now()}`);
+      const d = await r.json();
+      if (d.updatedAt !== initTs && d.jars?.length) return d;
+    } catch {}
+  }
+  const r = await fetch(`data/jars.json?_=${Date.now()}`);
+  return r.json();
+}
+
+// ── REVEAL ──
+async function reveal(data) {
+  const jars = data.jars || [];
+  const total = jars.reduce((s,j) => s + (j.amountNum||0), 0);
+
+  showView('resultsView');
+  await delay(200);
+
+  await countUp('totalAmount', total, 2200);
+  burst({ particleCount: 140, spread: 120, origin: { y: 0.4 } });
+
+  await delay(600);
+
+  for (const cat of CAT_ORDER) {
+    const catJars = jars.filter(j => j.category === cat && j.amountNum != null);
+    if (!catJars.length) continue;
+    const winner = catJars.sort((a,b) => b.amountNum - a.amountNum)[0];
+    const vid = VIDEOS[winner.id];
+    const color = CAT_COLORS[cat] || '#fff';
+
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.style.borderColor = color + '55';
+    card.innerHTML = `
+      ${vid ? `<img class="cat-thumb" src="https://img.youtube.com/vi/${vid}/mqdefault.jpg" alt="">` : ''}
+      <div class="cat-info">
+        <div class="cat-badge" style="color:${color}">${cat}</div>
+        <div class="cat-winner">${winner.student}</div>
+        <div class="cat-amount" style="color:${color}">${winner.amountText || ''}</div>
+      </div>
+      <div class="cat-crown">🏆</div>`;
+    document.getElementById('catsGrid').appendChild(card);
+
+    await delay(100);
+    card.classList.add('show');
+    await delay(500);
+    burst({ particleCount: 70, spread: 55, origin: { y: 0.65 }, colors: [color,'#fff','#fbbf24'] });
+    await delay(1000);
+  }
+
+  await delay(600);
+  fireworks();
+}
+
+// ── UTILS ──
+function showView(id) {
+  ['introView','loadingView','resultsView'].forEach(v =>
+    document.getElementById(v).style.display = v === id ? 'flex' : 'none'
+  );
+}
+function setStatus(t) { document.getElementById('loadingStatus').textContent = t; }
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function countUp(elId, target, ms = 2000) {
+  const el = document.getElementById(elId);
+  const start = Date.now();
+  return new Promise(res => {
+    const tick = () => {
+      const p = Math.min((Date.now()-start)/ms, 1);
+      const e = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.round(e*target).toLocaleString('uk-UA') + ' ₴';
+      p < 1 ? requestAnimationFrame(tick) : res();
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+function burst(opts) { confetti({ particleCount: 100, spread: 80, ...opts }); }
+
+function fireworks() {
+  const end = Date.now() + 5000;
+  const iv = setInterval(() => {
+    if (Date.now() > end) { clearInterval(iv); return; }
+    confetti({ particleCount: 55, angle: 60, spread: 50, origin: { x: 0, y: 0.7 }, colors: ['#5da82c','#fbbf24','#fff','#ea580c'] });
+    confetti({ particleCount: 55, angle: 120, spread: 50, origin: { x: 1, y: 0.7 }, colors: ['#7c3aed','#fbbf24','#fff','#2563eb'] });
+  }, 280);
+}
+</script>
+</body>
+</html>
