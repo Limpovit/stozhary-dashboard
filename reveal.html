@@ -208,7 +208,9 @@ function updateDots() {
 
 // ── LAUNCH ──
 async function launch() {
-  const isDemo = new URLSearchParams(location.search).has('demo');
+  const params = new URLSearchParams(location.search);
+  const isDemo = params.has('demo');
+  const token = params.get('token');
   showView('loadingView');
 
   const statusMsgs = [
@@ -226,6 +228,21 @@ async function launch() {
     freshData = await r.json();
   } else {
     const initTs = await getTs();
+    if (token) {
+      setStatus('🚀 Запускаємо оновлення через GitHub...');
+      try {
+        const resp = await fetch(
+          'https://api.github.com/repos/Limpovit/stozhary-dashboard/actions/workflows/update-data.yml/dispatches',
+          {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ref: 'main' }),
+          }
+        );
+        if (!resp.ok) setStatus('⚠️ Не вдалося запустити — чекаємо на авто-оновлення...');
+        else setStatus('✅ Запущено! Очікуємо результати...');
+      } catch { setStatus('⚠️ Помилка мережі — чекаємо на авто-оновлення...'); }
+    }
     const minDelay = delay(6000);
     freshData = await Promise.all([minDelay, waitForUpdate(initTs)]).then(r => r[1]);
   }
