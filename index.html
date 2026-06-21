@@ -63,6 +63,31 @@ header { overflow: hidden; }
 }
 
 /* ABOUT */
+/* CEREMONY BANNER */
+.ceremony-banner {
+  background: linear-gradient(135deg, #1a2e10 0%, #2d5218 50%, #1a3a0c 100%);
+  color: #fff;
+  border-bottom: 3px solid #5da82c;
+}
+.ceremony-inner {
+  max-width: 1100px; margin: 0 auto; padding: 28px 48px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.ceremony-left { flex: 1; }
+.ceremony-tag {
+  display: inline-block; background: #5da82c; color: #fff;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 10px;
+}
+.ceremony-title { font-size: 1.35rem; font-weight: 800; line-height: 1.2; margin-bottom: 8px; }
+.ceremony-text { font-size: 0.88rem; opacity: 0.8; margin-bottom: 14px; }
+.ceremony-details {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  font-size: 0.88rem; font-weight: 700; margin-bottom: 12px; color: #a8d878;
+}
+.ceremony-sub { font-size: 0.78rem; opacity: 0.65; line-height: 1.7; }
+.ceremony-badge { font-size: 4rem; flex-shrink: 0; opacity: 0.85; }
+
 .about-wrap { max-width: 800px; margin: 32px auto; padding: 0 24px; }
 .about-box {
   background: var(--card);
@@ -311,6 +336,7 @@ header { overflow: hidden; }
 .card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; margin-bottom: 2px; }
 .card-grade { font-size: 0.78rem; color: var(--muted); margin-bottom: 12px; }
 .amount-value { font-size: 1.75rem; font-weight: 800; line-height: 1; }
+.amount-value.amount-hidden { font-size: 1rem; color: var(--muted); font-weight: 600; }
 .amount-label { font-size: 0.72rem; color: var(--muted); margin-top: 3px; margin-bottom: 12px; }
 .progress-wrap {
   background: var(--bg); border-radius: 6px;
@@ -433,6 +459,23 @@ header { overflow: hidden; }
     </div>
   </div>
 </header>
+
+<div class="ceremony-banner">
+  <div class="ceremony-inner">
+    <div class="ceremony-left">
+      <div class="ceremony-tag">🎉 Вже завтра!</div>
+      <div class="ceremony-title">Підсумкова церемонія «Стожари змін 2026»</div>
+      <div class="ceremony-text">Свято досягнень, перемог, вдячності та завершення ще одного неймовірного навчального року 💚</div>
+      <div class="ceremony-details">
+        <span>📅 22 червня</span>
+        <span>🕤 9:30</span>
+        <span>📍 ВДНГ, корпус 6 — Universum Hall</span>
+      </div>
+      <div class="ceremony-sub">На вас чекають нагороди, відзнаки, яскраві виступи та щирі емоції ✨<br>Для вас працюватиме бар з кавою, чаєм та смаколиками ☕<br>Приходьте красивими, усміхненими та готовими багато аплодувати 👏</div>
+    </div>
+    <div class="ceremony-badge">🏆</div>
+  </div>
+</div>
 
 <div class="about-wrap">
   <div class="about-box">
@@ -619,18 +662,8 @@ function leaderCardHTML(jar, rank) {
     <div class="leader-card-info">
       <div class="card-name">${jar.student}</div>
       <div class="card-grade">${jar.grade} клас</div>
-      <div class="amount-value">${jar.amountText || '—'}</div>
-      <div class="amount-label">зібрано</div>
-      ${historyById[jar.id]?.length >= 2 ? `<button class="card-toggle" onclick="toggleCard(this)">📈 Динаміка збору</button>` : ''}
-      <div class="card-details">
-        ${sparklineHTML(historyById[jar.id], color)}
-        ${p !== null ? `
-          <div class="progress-wrap" style="max-width:280px">
-            <div class="progress-bar" style="width:${p}%;background:${color}"></div>
-          </div>
-          <div class="progress-label">${p}% від мети ${jar.goalText}</div>
-        ` : ''}
-      </div>
+      <div class="amount-value amount-hidden">🔒 Результати — завтра!</div>
+      <div class="amount-label">на церемонії 22 червня</div>
       <a class="card-link" href="${jar.jarUrl}" target="_blank" rel="noopener">💳 Задонатити</a>
     </div>
   </div>`;
@@ -665,8 +698,8 @@ function cardHTML(jar, rank, isLeader) {
       ${activeFilter === '' ? `<span class="cat-badge cat-${slug}">${jar.category}</span>` : ''}
       <div class="card-name">${jar.student}</div>
       <div class="card-grade">${jar.grade} клас</div>
-      <div class="amount-value">${jar.amountText || '—'}</div>
-      <div class="amount-label">зібрано</div>
+      <div class="amount-value amount-hidden">🔒 Результати — завтра!</div>
+      <div class="amount-label">на церемонії 22 червня</div>
       ${historyById[jar.id]?.length >= 2 ? `<button class="card-toggle" onclick="toggleCard(this)">📈 Динаміка збору</button>` : ''}
       <div class="card-details">
         ${sparklineHTML(historyById[jar.id], color)}
@@ -686,12 +719,9 @@ function cardHTML(jar, rank, isLeader) {
 function renderStats(jars) {
   const withData = jars.filter(j => j.amountNum != null);
   const total = withData.reduce((s, j) => s + j.amountNum, 0);
-  document.getElementById('statTotal').textContent = fmt(total);
+  document.getElementById('statTotal').textContent = '🔒';
   document.getElementById('statCount').textContent = jars.length;
-  const leader = [...jars].sort((a, b) => (b.amountNum || 0) - (a.amountNum || 0))[0];
-  if (leader?.amountNum) {
-    document.getElementById('statLeader').textContent = leader.student.split(' ')[0];
-  }
+  document.getElementById('statLeader').textContent = '?';
 }
 
 function render() {
