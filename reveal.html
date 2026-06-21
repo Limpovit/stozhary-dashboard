@@ -208,8 +208,8 @@ function updateDots() {
 
 // ── LAUNCH ──
 async function launch() {
+  const isDemo = new URLSearchParams(location.search).has('demo');
   showView('loadingView');
-  const initTs = await getTs();
 
   const statusMsgs = [
     '🏦 Парсимо Monobank банки...','💰 Рахуємо донати...',
@@ -219,8 +219,16 @@ async function launch() {
   let si = 0;
   const msgTimer = setInterval(() => { setStatus(statusMsgs[si++ % statusMsgs.length]); }, 2500);
 
-  const minDelay = delay(6000);
-  const freshData = await Promise.all([minDelay, waitForUpdate(initTs)]).then(r => r[1]);
+  let freshData;
+  if (isDemo) {
+    await delay(4000);
+    const r = await fetch(`data/jars.json?_=${Date.now()}`);
+    freshData = await r.json();
+  } else {
+    const initTs = await getTs();
+    const minDelay = delay(6000);
+    freshData = await Promise.all([minDelay, waitForUpdate(initTs)]).then(r => r[1]);
+  }
 
   clearInterval(msgTimer);
   await reveal(freshData);
