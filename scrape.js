@@ -43,16 +43,16 @@ async function scrapeJar(browser, jarId) {
 
   try {
     await page.goto(`https://send.monobank.ua/jar/${jarId}`, {
-      waitUntil: 'domcontentloaded',
-      timeout: 30000,
+      waitUntil: 'networkidle',
+      timeout: 40000,
     });
 
-    await page.waitForFunction(
-      () => window.conf && window.conf.renderClientHappened === true,
-      { timeout: 25000 }
-    );
+    // Wait for amount element or h1 to appear (more robust than window.conf)
+    await page.waitForSelector('h1, .stats-data-value, .jarTitle', {
+      timeout: 20000,
+    }).catch(() => null);
 
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(500);
 
     return await page.evaluate(() => {
       const h1 = document.querySelector('h1');
