@@ -2,7 +2,7 @@ name: Update Jar Data
 
 on:
   schedule:
-    - cron: '*/15 * * * *'   # кожні 15 хвилин
+    - cron: '0 7 * * *'   # раз на день о 10:00 Київ (07:00 UTC)
   workflow_dispatch:           # ручний запуск
   push:
     branches: [main]

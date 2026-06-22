@@ -460,22 +460,6 @@ header { overflow: hidden; }
   </div>
 </header>
 
-<div class="ceremony-banner">
-  <div class="ceremony-inner">
-    <div class="ceremony-left">
-      <div class="ceremony-tag">🎉 Вже завтра!</div>
-      <div class="ceremony-title">Підсумкова церемонія «Стожари змін 2026»</div>
-      <div class="ceremony-text">Свято досягнень, перемог, вдячності та завершення ще одного неймовірного навчального року 💚</div>
-      <div class="ceremony-details">
-        <span>📅 22 червня</span>
-        <span>🕤 9:30</span>
-        <span>📍 ВДНГ, корпус 6 — Universum Hall</span>
-      </div>
-      <div class="ceremony-sub">На вас чекають нагороди, відзнаки, яскраві виступи та щирі емоції ✨<br>Для вас працюватиме бар з кавою, чаєм та смаколиками ☕<br>Приходьте красивими, усміхненими та готовими багато аплодувати 👏</div>
-    </div>
-    <div class="ceremony-badge">🏆</div>
-  </div>
-</div>
 
 <div class="about-wrap">
   <div class="about-box">
@@ -662,8 +646,18 @@ function leaderCardHTML(jar, rank) {
     <div class="leader-card-info">
       <div class="card-name">${jar.student}</div>
       <div class="card-grade">${jar.grade} клас</div>
-      <div class="amount-value amount-hidden">🔒 Результати — завтра!</div>
-      <div class="amount-label">на церемонії 22 червня</div>
+      <div class="amount-value">${jar.amountText || '—'}</div>
+      <div class="amount-label">зібрано</div>
+      ${historyById[jar.id]?.length >= 2 ? `<button class="card-toggle" onclick="toggleCard(this)">📈 Динаміка збору</button>` : ''}
+      <div class="card-details">
+        ${sparklineHTML(historyById[jar.id], color)}
+        ${p !== null ? `
+          <div class="progress-wrap" style="max-width:280px">
+            <div class="progress-bar" style="width:${p}%;background:${color}"></div>
+          </div>
+          <div class="progress-label">${p}% від мети ${jar.goalText}</div>
+        ` : ''}
+      </div>
       <a class="card-link" href="${jar.jarUrl}" target="_blank" rel="noopener">💳 Задонатити</a>
     </div>
   </div>`;
@@ -719,9 +713,12 @@ function cardHTML(jar, rank, isLeader) {
 function renderStats(jars) {
   const withData = jars.filter(j => j.amountNum != null);
   const total = withData.reduce((s, j) => s + j.amountNum, 0);
-  document.getElementById('statTotal').textContent = '🔒';
+  document.getElementById('statTotal').textContent = fmt(total);
   document.getElementById('statCount').textContent = jars.length;
-  document.getElementById('statLeader').textContent = '?';
+  const leader = [...jars].sort((a, b) => (b.amountNum || 0) - (a.amountNum || 0))[0];
+  if (leader?.amountNum) {
+    document.getElementById('statLeader').textContent = leader.student.split(' ')[0];
+  }
 }
 
 function render() {
@@ -807,7 +804,7 @@ function renderChart(filter) {
   note.textContent = '';
   const labels = snaps.map(s => {
     const d = new Date(s.ts);
-    return d.toLocaleString('uk-UA', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    return d.toLocaleString('uk-UA', { month: 'short', day: 'numeric' });
   });
 
   let datasets;
@@ -877,6 +874,15 @@ document.getElementById('sortSelect').addEventListener('change', e => {
   render();
 });
 
+function toDailySnapshots(snapshots) {
+  const byDay = {};
+  for (const snap of snapshots) {
+    const day = snap.ts.slice(0, 10);
+    byDay[day] = snap;
+  }
+  return Object.keys(byDay).sort().map(d => byDay[d]);
+}
+
 // Load data
 async function loadData() {
   try {
@@ -888,7 +894,9 @@ async function loadData() {
     const history = histRes?.ok ? await histRes.json().catch(() => null) : null;
 
     if (history?.snapshots) {
-      for (const snap of history.snapshots) {
+      const daily = toDailySnapshots(history.snapshots);
+      history.snapshots = daily;
+      for (const snap of daily) {
         for (const [id, amount] of Object.entries(snap.byId || {})) {
           if (!historyById[id]) historyById[id] = [];
           if (amount != null) historyById[id].push(amount);
