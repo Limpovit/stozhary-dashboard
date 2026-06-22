@@ -112,6 +112,9 @@ header { overflow: hidden; }
 .stat + .stat { border-left: 1px solid var(--border); }
 .stat-value { font-size: 1.9rem; font-weight: 800; line-height: 1; }
 .stat-label { font-size: 0.7rem; color: var(--muted); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.06em; }
+.win-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.stat-winner { font-size: 1.4rem; }
+.win-amt { font-size: 0.82rem; color: var(--muted); margin-top: 3px; font-weight: 600; }
 
 /* CHART */
 .chart-wrap-outer { max-width: 900px; margin: 24px auto; padding: 0 24px; }
@@ -474,12 +477,24 @@ header { overflow: hidden; }
     <div class="stat-label">Загалом зібрано ₴</div>
   </div>
   <div class="stat">
-    <div class="stat-value" id="statCount">—</div>
-    <div class="stat-label">Учасників</div>
+    <div class="win-cat" style="color:#7c3aed">🗣 Вартові слова</div>
+    <div class="stat-value stat-winner" id="winSlova">—</div>
+    <div class="win-amt" id="amtSlova">—</div>
   </div>
   <div class="stat">
-    <div class="stat-value" id="statLeader">—</div>
-    <div class="stat-label">Лідер збору</div>
+    <div class="win-cat" style="color:#16a34a">🌿 Вартові життя</div>
+    <div class="stat-value stat-winner" id="winZhyttia">—</div>
+    <div class="win-amt" id="amtZhyttia">—</div>
+  </div>
+  <div class="stat">
+    <div class="win-cat" style="color:#ea580c">🔥 Вартові духу</div>
+    <div class="stat-value stat-winner" id="winDukhu">—</div>
+    <div class="win-amt" id="amtDukhu">—</div>
+  </div>
+  <div class="stat">
+    <div class="win-cat" style="color:#2563eb">🔬 Вартові логіки</div>
+    <div class="stat-value stat-winner" id="winLogiky">—</div>
+    <div class="win-amt" id="amtLogiky">—</div>
   </div>
 </div>
 
@@ -692,8 +707,8 @@ function cardHTML(jar, rank, isLeader) {
       ${activeFilter === '' ? `<span class="cat-badge cat-${slug}">${jar.category}</span>` : ''}
       <div class="card-name">${jar.student}</div>
       <div class="card-grade">${jar.grade} клас</div>
-      <div class="amount-value amount-hidden">🔒 Результати — завтра!</div>
-      <div class="amount-label">на церемонії 22 червня</div>
+      <div class="amount-value">${jar.amountText || '—'}</div>
+      <div class="amount-label">зібрано</div>
       ${historyById[jar.id]?.length >= 2 ? `<button class="card-toggle" onclick="toggleCard(this)">📈 Динаміка збору</button>` : ''}
       <div class="card-details">
         ${sparklineHTML(historyById[jar.id], color)}
@@ -714,10 +729,20 @@ function renderStats(jars) {
   const withData = jars.filter(j => j.amountNum != null);
   const total = withData.reduce((s, j) => s + j.amountNum, 0);
   document.getElementById('statTotal').textContent = fmt(total);
-  document.getElementById('statCount').textContent = jars.length;
-  const leader = [...jars].sort((a, b) => (b.amountNum || 0) - (a.amountNum || 0))[0];
-  if (leader?.amountNum) {
-    document.getElementById('statLeader').textContent = leader.student.split(' ')[0];
+
+  const cats = [
+    { cat: 'Вартові слова',  nameId: 'winSlova',   amtId: 'amtSlova'   },
+    { cat: 'Вартові життя',  nameId: 'winZhyttia', amtId: 'amtZhyttia' },
+    { cat: 'Вартові духу',   nameId: 'winDukhu',   amtId: 'amtDukhu'   },
+    { cat: 'Вартові логіки', nameId: 'winLogiky',  amtId: 'amtLogiky'  },
+  ];
+  for (const { cat, nameId, amtId } of cats) {
+    const winner = jars.filter(j => j.category === cat && j.amountNum != null)
+      .sort((a, b) => b.amountNum - a.amountNum)[0];
+    if (winner) {
+      document.getElementById(nameId).textContent = winner.student.split(' ')[0];
+      document.getElementById(amtId).textContent = winner.amountText || '—';
+    }
   }
 }
 
