@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-30T12:38:15.720Z",
+  "updatedAt": "2026-08-31T14:50:44.655Z",
   "jars": [
     {
       "id": "2XrzwMqePn",
@@ -7,14 +7,14 @@
       "grade": "8",
       "category": "Вартові слова",
       "jarUrl": "https://send.monobank.ua/jar/2XrzwMqePn",
-      "jarName": null,
-      "ownerName": null,
+      "jarName": "",
+      "ownerName": "",
       "amountText": "14 850 ₴",
       "amountNum": 14850,
       "goalText": null,
       "goalNum": null,
-      "hasError": true,
-      "updatedAt": "2026-08-30T12:35:36.564Z"
+      "hasError": false,
+      "updatedAt": "2026-08-31T14:48:54.729Z"
     },
     {
       "id": "W6XwXiXi3",
@@ -29,7 +29,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:35:43.577Z"
+      "updatedAt": "2026-08-31T14:49:00.871Z"
     },
     {
       "id": "922kecxCQw",
@@ -44,7 +44,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:35:50.610Z"
+      "updatedAt": "2026-08-31T14:49:07.026Z"
     },
     {
       "id": "8XPX4oyhHq",
@@ -59,7 +59,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:35:57.639Z"
+      "updatedAt": "2026-08-31T14:49:13.116Z"
     },
     {
       "id": "5QTG83y6eG",
@@ -74,7 +74,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:36:04.429Z"
+      "updatedAt": "2026-08-31T14:49:19.236Z"
     },
     {
       "id": "4anJ7oFxgJ",
@@ -89,7 +89,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:36:11.474Z"
+      "updatedAt": "2026-08-31T14:49:25.318Z"
     },
     {
       "id": "9BfZTQ2n4q",
@@ -104,7 +104,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:36:18.472Z"
+      "updatedAt": "2026-08-31T14:49:31.457Z"
     },
     {
       "id": "7KSGo48SLf",
@@ -119,7 +119,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:36:25.450Z"
+      "updatedAt": "2026-08-31T14:49:37.527Z"
     },
     {
       "id": "AXA934Q9Kv",
@@ -134,7 +134,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:36:32.474Z"
+      "updatedAt": "2026-08-31T14:49:43.607Z"
     },
     {
       "id": "96hkTy4SJk",
@@ -149,7 +149,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:36:39.502Z"
+      "updatedAt": "2026-08-31T14:49:49.692Z"
     },
     {
       "id": "2g5RzDYKxc",
@@ -164,7 +164,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:36:46.530Z"
+      "updatedAt": "2026-08-31T14:49:55.882Z"
     },
     {
       "id": "ADjkdb6bEk",
@@ -179,7 +179,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:36:53.572Z"
+      "updatedAt": "2026-08-31T14:50:01.969Z"
     },
     {
       "id": "cubfarQkJ",
@@ -194,7 +194,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:37:00.357Z"
+      "updatedAt": "2026-08-31T14:50:08.082Z"
     },
     {
       "id": "7ZEmbjBYx4",
@@ -209,7 +209,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:37:07.387Z"
+      "updatedAt": "2026-08-31T14:50:14.143Z"
     },
     {
       "id": "7doAjBszk9",
@@ -224,7 +224,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:37:14.388Z"
+      "updatedAt": "2026-08-31T14:50:20.202Z"
     },
     {
       "id": "1bwGnTwRm",
@@ -239,7 +239,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:37:21.395Z"
+      "updatedAt": "2026-08-31T14:50:26.299Z"
     },
     {
       "id": "9CHe2a9Wz",
@@ -254,7 +254,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:37:28.448Z"
+      "updatedAt": "2026-08-31T14:50:32.433Z"
     },
     {
       "id": "3ZB3YtdSvB",
@@ -262,14 +262,14 @@
       "grade": "5",
       "category": "Вартові логіки",
       "jarUrl": "https://send.monobank.ua/jar/3ZB3YtdSvB",
-      "jarName": null,
-      "ownerName": null,
+      "jarName": "",
+      "ownerName": "",
       "amountText": "4 034 ₴",
       "amountNum": 4034,
       "goalText": null,
       "goalNum": null,
-      "hasError": true,
-      "updatedAt": "2026-08-30T12:38:08.506Z"
+      "hasError": false,
+      "updatedAt": "2026-08-31T14:50:38.527Z"
     },
     {
       "id": "stHiibiKi",
@@ -284,7 +284,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-08-30T12:38:15.690Z"
+      "updatedAt": "2026-08-31T14:50:44.628Z"
     }
   ]
 }
