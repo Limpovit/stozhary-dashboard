@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T12:08:15.589Z",
+  "updatedAt": "2026-09-12T11:28:55.279Z",
   "jars": [
     {
       "id": "2XrzwMqePn",
@@ -14,7 +14,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:05:38.799Z"
+      "updatedAt": "2026-09-12T11:27:15.127Z"
     },
     {
       "id": "W6XwXiXi3",
@@ -29,7 +29,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:05:45.485Z"
+      "updatedAt": "2026-09-12T11:27:21.173Z"
     },
     {
       "id": "922kecxCQw",
@@ -44,7 +44,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:05:52.380Z"
+      "updatedAt": "2026-09-12T11:27:26.762Z"
     },
     {
       "id": "8XPX4oyhHq",
@@ -59,7 +59,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:05:59.263Z"
+      "updatedAt": "2026-09-12T11:27:32.315Z"
     },
     {
       "id": "5QTG83y6eG",
@@ -74,7 +74,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:06:06.177Z"
+      "updatedAt": "2026-09-12T11:27:38.377Z"
     },
     {
       "id": "4anJ7oFxgJ",
@@ -89,7 +89,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:06:13.059Z"
+      "updatedAt": "2026-09-12T11:27:43.974Z"
     },
     {
       "id": "9BfZTQ2n4q",
@@ -97,14 +97,14 @@
       "grade": "8",
       "category": "Вартові життя",
       "jarUrl": "https://send.monobank.ua/jar/9BfZTQ2n4q",
-      "jarName": null,
-      "ownerName": null,
+      "jarName": "",
+      "ownerName": "",
       "amountText": "3 850 ₴",
       "amountNum": 3850,
       "goalText": null,
       "goalNum": null,
-      "hasError": true,
-      "updatedAt": "2026-09-11T12:06:53.115Z"
+      "hasError": false,
+      "updatedAt": "2026-09-12T11:27:49.598Z"
     },
     {
       "id": "7KSGo48SLf",
@@ -119,7 +119,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:07:00.112Z"
+      "updatedAt": "2026-09-12T11:27:55.188Z"
     },
     {
       "id": "AXA934Q9Kv",
@@ -134,7 +134,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:07:07.040Z"
+      "updatedAt": "2026-09-12T11:28:00.604Z"
     },
     {
       "id": "96hkTy4SJk",
@@ -149,7 +149,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:07:13.933Z"
+      "updatedAt": "2026-09-12T11:28:06.164Z"
     },
     {
       "id": "2g5RzDYKxc",
@@ -164,7 +164,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:07:20.833Z"
+      "updatedAt": "2026-09-12T11:28:11.715Z"
     },
     {
       "id": "ADjkdb6bEk",
@@ -179,7 +179,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:07:27.289Z"
+      "updatedAt": "2026-09-12T11:28:17.349Z"
     },
     {
       "id": "cubfarQkJ",
@@ -194,7 +194,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:07:34.170Z"
+      "updatedAt": "2026-09-12T11:28:22.861Z"
     },
     {
       "id": "7ZEmbjBYx4",
@@ -209,7 +209,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:07:41.059Z"
+      "updatedAt": "2026-09-12T11:28:27.714Z"
     },
     {
       "id": "7doAjBszk9",
@@ -224,7 +224,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:07:47.997Z"
+      "updatedAt": "2026-09-12T11:28:33.260Z"
     },
     {
       "id": "1bwGnTwRm",
@@ -239,7 +239,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:07:55.151Z"
+      "updatedAt": "2026-09-12T11:28:38.756Z"
     },
     {
       "id": "9CHe2a9Wz",
@@ -254,7 +254,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:08:02.091Z"
+      "updatedAt": "2026-09-12T11:28:44.301Z"
     },
     {
       "id": "3ZB3YtdSvB",
@@ -269,7 +269,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:08:08.689Z"
+      "updatedAt": "2026-09-12T11:28:49.677Z"
     },
     {
       "id": "stHiibiKi",
@@ -284,7 +284,7 @@
       "goalText": null,
       "goalNum": null,
       "hasError": false,
-      "updatedAt": "2026-09-11T12:08:15.560Z"
+      "updatedAt": "2026-09-12T11:28:55.252Z"
     }
   ]
 }
